@@ -69,7 +69,7 @@ public class Main {
 	
 	
  public static class EventListener implements SerialPortEventListener{
-private int count,c,sum;
+
 	@Override
 	public void serialEvent(SerialPortEvent event) {
 		 byte[] buffer=null;

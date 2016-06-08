@@ -1,6 +1,6 @@
 package main;
 
-import javax.swing.JFrame;
+
 
 import frame.Testokno;
 import jssc.SerialPort;
