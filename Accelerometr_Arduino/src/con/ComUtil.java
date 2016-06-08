@@ -1,4 +1,4 @@
-package con;
+package connect;
 
 import jssc.SerialPortList;
 
