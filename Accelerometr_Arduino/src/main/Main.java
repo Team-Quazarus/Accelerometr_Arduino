@@ -15,7 +15,9 @@ import jssc.SerialPortException;
 import jssc.SerialPortList;
 
 public class Main {
-	static SerialPort serial; //тута нет катанова 
+
+	static SerialPort serial;//ry6ut6u66uut
+
 	public static Font progFont;//dfvbmfdkbfdk
 	public int afysdyh;
 	public static void main(String[] args) {
