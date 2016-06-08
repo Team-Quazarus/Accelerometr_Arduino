@@ -16,7 +16,7 @@ import jssc.SerialPortList;
 
 public class Main {
 
-	static SerialPort serial;//ry6ut6u66uut
+	static SerialPort serial;
 
 	public static Font progFont;//dfvbmfdkbfdk
 	public int afysdyh;
