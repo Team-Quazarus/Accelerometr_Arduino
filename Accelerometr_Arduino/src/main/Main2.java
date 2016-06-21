@@ -1,6 +1,6 @@
 package main;
 
-
+import javax.swing.JFrame;
 
 import frame.Testokno;
 import jssc.SerialPort;
@@ -11,7 +11,7 @@ import jssc.SerialPortList;
 public class Main2 {
 	static SerialPort serialPort;
 	static Testokno okno;
-	public static void main(String[] args) {
+	public static void main(String ... args) {
 		String[] list = SerialPortList.getPortNames();
 		for (String string : list) {
 			System.out.println(string);
@@ -20,7 +20,7 @@ public class Main2 {
 		okno.setSize(800, 600);
 		okno.setVisible(true);
 		
-		 serialPort = new SerialPort("/dev/ttyUSB0");
+		 serialPort = new SerialPort(args[0]);
 		
 		try {
 			serialPort.openPort();

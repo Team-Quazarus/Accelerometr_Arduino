@@ -7,28 +7,39 @@ import jssc.SerialPortEventListener;
 import static jssc.SerialPort.*;
 
 import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javax.swing.JFrame;
 
+import connect.ComUtil;
+import frame.CalibrateWindow;
 import frame.ConnectFrame;
+import frame.MainWindow;
 import jssc.SerialPortException;
 import jssc.SerialPortList;
 
 public class Main {
 
-	static SerialPort serial;
-
+	
+	public static MainWindow mainWindow;
+	public static CalibrateWindow calibrwind;
 	public static Font progFont;//dfvbmfdkbfdk
-	public int afysdyh;
+	public static DecimalFormat format = new  DecimalFormat("##0.00");
+	public static CofigU conf;
+	
 	public static void main(String[] args) {
 		String[] portList = SerialPortList.getPortNames();
 		for (String string : portList) {
 			System.out.println(string);
 		}
 		progFont = new Font("Arial", Font.TYPE1_FONT,20);
+		conf = new CofigU();
 		boolean b=false;
 		if(b){
-			Main2.main(args);
+		
+			
 		}else{
 			JFrame f = new ConnectFrame();
 			f.setVisible(true);
@@ -49,45 +60,6 @@ public class Main {
 	
 
 	}
-	public static boolean createPort(String name){
-		serial=new SerialPort(name);
-		try {
-			serial.openPort();
-			serial.setParams(BAUDRATE_9600,DATABITS_8,STOPBITS_1 ,PARITY_NONE);
-			
-			serial.setEventsMask(SerialPort.MASK_RXCHAR);
-			serial.addEventListener(new EventListener());
-			serial.writeByte((byte)56);
-			return true;
-			//serial.closePort();
-		} catch (SerialPortException e) {
-			e.printStackTrace();
-			System.out.println(e.getExceptionType());
-			return false;
-		}
-	}
 	
-	
- public static class EventListener implements SerialPortEventListener{
-
-	@Override
-	public void serialEvent(SerialPortEvent event) {
-		 byte[] buffer=null;
-		if(event.isRXCHAR()){
-            try {
-                 buffer = serial.readBytes(8);
-                 for (byte b : buffer) {
-					System.out.print(b);
-				}
-                 System.out.println();
-            }
-            catch (SerialPortException ex) {
-                System.out.println(ex);
-            }
-        }
-		
-	}
-		
-	}
 }
 
